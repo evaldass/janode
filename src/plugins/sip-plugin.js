@@ -298,9 +298,10 @@ class SipHandle extends Handle {
    * @param {string} [params.outbound_proxy] - The server to register at (not needed for guests)
    * @param {number} [params.register_ttl] - The number of seconds after which the registration should expire
    *
+   * @param {string} [params.authuser] - The username to use for authentication, if different from the SIP URI username
    * @returns {Promise<module:sip-plugin~SIP_EVENT_REGISTERED>}
    */
-  async register({ type, send_register, force_udp, force_tcp, sips, rfc2543_cancel, username, secret, ha1_secret, display_name, proxy, outbound_proxy, register_ttl }) {
+  async register({ type, send_register, force_udp, force_tcp, sips, rfc2543_cancel, username, secret, ha1_secret, authuser, display_name, proxy, outbound_proxy, register_ttl }) { // Added authuser here
     const body = {
       request: REQUEST_REGISTER,
       username,
@@ -318,6 +319,7 @@ class SipHandle extends Handle {
     if (typeof proxy === 'string') body.proxy = proxy;
     if (typeof outbound_proxy === 'string') body.outbound_proxy = outbound_proxy;
     if (typeof register_ttl === 'number') body.register_ttl = register_ttl;
+    if (typeof authuser === 'string') body.authuser = authuser; // Add authuser to body if provided
 
     const request = {
       janus: 'message',
