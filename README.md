@@ -16,6 +16,8 @@ The supported Janus plugins are:
 
 The library is available on [npm](https://www.npmjs.com/package/janode) and the source code is on [github](https://github.com/meetecho/janode).
 
+Online documentation can be found at [https://meetecho.github.io/janode](https://meetecho.github.io/janode).
+
 ## Example of usage
 
 This is just a pretty simple hello world for the echotest plugin.
